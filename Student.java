@@ -21,9 +21,7 @@ public class Student {
     }
 
     Student (int numberTicket2, String name2, String surname2) {
-        numberTicket = numberTicket2;
-        name = name2;
-        surname = surname2;
+        this(numberTicket2, name2, surname2, 0, 0, 0, 0);
     }
 
     Student () {
