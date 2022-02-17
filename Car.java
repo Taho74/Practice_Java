@@ -1,5 +1,7 @@
 package ru.geekbrains.qa.java2.lesson1.Practice6;
 
+import static ru.geekbrains.qa.java2.lesson1.Practice6.Car.changeColor;
+
 public class Car {
     String color;
     String engine;
@@ -17,13 +19,13 @@ public class Car {
     }
 
     public static void changeColor (Car c1, Car c2) {
-        Car c3 = c1;
-        c1 = c2;
-        c2 = c3;
+        String c3 = c1.color;
+        c1.color = c2.color;
+        c2.color = c3;
+
     }
 
     @Override
-
     public String toString() {
         return "Цвет машины: " + color + " двигатель: " + engine + " кол-во дверей: " + doors;
     }
@@ -37,6 +39,10 @@ class CarTest {
         System.out.println(c1);
 
         Car c2 = new Car("red", "V6", 3);
+        CarTest ct = new CarTest();
+        changeColor(c1, c2);
+        System.out.println(c1);
+        System.out.println(c2);
 
     }
 
