@@ -1,36 +1,50 @@
-package ru.geekbrains.qa.java2.lesson1.Practice;
+package ru.geekbrains.qa.java2.lesson1.Practice6;
 
 public class Student {
-    int numberTicket;
     String name;
-    String surname;
-    int year;
-    int scoreMath;
-    int scoreEconomic;
-    int scoreLanguage;
-    int scoreAll;
+    int course;
+    double grade;
 
-    Student (int numberTicket1, String name1, String surname1, int year1, int scoreMath1, int scoreEconomic1, int scoreLanguage1) {
-        numberTicket = numberTicket1;
-        name = name1;
-        surname = surname1;
-        year = year1;
-        scoreMath = scoreMath1;
-        scoreEconomic = scoreEconomic1;
-        scoreLanguage = scoreLanguage1;
+    Student (String name, int course, double grade) {
+        this.name = name;
+        this.course = course;
+        this.grade = grade;
     }
 
-    Student (int numberTicket2, String name2, String surname2) {
-        this(numberTicket2, name2, surname2, 0, 0, 0, 0);
+    public static void main(String[] args) {
+        Student st1 = new Student("Ivan", 2, 4.3);
+        Student st2 = new Student("Ivan", 2, 4.3);
+        StudentTest.compareStudents(st1, st2);
+        StudentTest.compareStudents2(st1, st2);
+    }
+}
+
+
+class StudentTest {
+
+    static void compareStudents (Student st1, Student st2) {
+        if (st1.name == st2.name && st1.course == st2.course && st1.grade == st2.grade) {
+            System.out.println("Студенты равны");
+        } else {
+            System.out.println("Студенты не равны");
+        }
     }
 
-    Student () {
 
+
+    static void compareStudents2 (Student st1, Student st2) {
+        if (st1.name == st2.name) {
+            if (st1.course == st2.course) {
+                if (st1.grade == st2.grade) {
+                    System.out.println("Студенты равны");
+                } else {
+                    System.out.println("Студенты не равны, так как у них разные оценки");
+                }
+            } else {
+                System.out.println("Студенты не равны, так как они на разных курсах");
+            }
+        } else {
+            System.out.println("Студенты не равны, так как у них разные имена");
+        }
     }
-
-    @Override
-    public String toString(){
-        return numberTicket + " " + name + " " + surname + " " + year + " " + scoreMath + " " + scoreEconomic + " " + scoreLanguage;
-    }
-
 }
