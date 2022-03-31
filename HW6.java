@@ -12,10 +12,11 @@ public class HW6 {
             System.out.println(a);
         }
 
-        cat.swim(3);
-        cat.run(20);
-        dog.swim(500);
-        dog.run(100);
+        System.out.println(cat.swim(3));
+        System.out.println(cat.run(20));
+        System.out.println(dog.swim(500));
+        System.out.println(dog.run(100));
+
 
         System.out.println(Animals.count);
     }
@@ -28,18 +29,10 @@ class Cat extends Animals {
     }
 
     @Override
-    public void swim (int a){
-        System.out.println("Кот не умеет плавать");
+    public String swim (int a) {
+        return "Кот не умеет плавать";
     }
 
-    @Override
-    public void run (int a){
-        if (a > limitRun) {
-            System.out.println("Кот не смог пробежать такую длинную дистанцию");
-        } else {
-            System.out.println("Кот пробежал " + a + " метров");
-        }
-    }
 }
 
 class Dog extends Animals {
@@ -47,29 +40,11 @@ class Dog extends Animals {
         super(name, color, age, limitRun, limitSwim);
         count++;
     }
-
-    @Override
-    public void swim (int a){
-        if (a > limitSwim) {
-            System.out.println("Пес не смог проплыть такую длинную дистанцию");
-        } else {
-            System.out.println("Пес проплыл " + a + " метров");
-        }
-    }
-
-    @Override
-    public void run (int a){
-        if (a > limitRun) {
-            System.out.println("Пес не смог пробежать такую длинную дистанцию");
-        } else {
-            System.out.println("Пес пробежал " + a + " метров");
-        }
-    }
 }
 
 interface IAnimal {
-    void swim(int a);
-    void run(int a);
+    String swim(int a);
+    String run(int a);
 }
 
 abstract class Animals implements IAnimal {
@@ -86,6 +61,24 @@ abstract class Animals implements IAnimal {
             this.age = age;
             this.limitRun = limitRun;
             this.limitSwim = limitSwim;
+    }
+
+    @Override
+    public String swim (int a) {
+        if (a > limitSwim) {
+            return name + " не смог проплыть данную дистанцию";
+        } else {
+            return name + " проплыл " + a + " метров";
+        }
+    }
+
+    @Override
+    public String run (int a) {
+        if (a > limitRun) {
+            return name + " не смог пробежать данную дистанцию";
+        } else {
+            return name + " пробежал " + a + " метров";
+        }
     }
 
     @Override
